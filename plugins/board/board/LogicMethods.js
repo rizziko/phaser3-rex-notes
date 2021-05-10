@@ -24,6 +24,7 @@ import AngleToward from './worldposition/AngleToward.js';
 import AngleSnapToDirection from './worldposition/AngleSnapToDirection.js';
 import IsOverlappingPoint from './worldposition/IsOverlappingPoint.js';
 import GridAlign from './worldposition/GridAlign.js';
+import GetGridPoints from './worldposition/GetGridPoints.js';
 
 import LineToTileXYArray from './shape/LineToTileXYArray.js';
 import CircleToTileXYArray from './shape/CircleToTileXYArray.js';
@@ -75,8 +76,6 @@ import FilledRingToTileXYArray from './ring/FilledRingToTileXYArray.js';
 import HasBlocker from './blocker/HasBlocker.js';
 import HasEdgeBlocker from './blocker/HasEdgeBlocker.js';
 
-import GetGridPoints from './gridpoints/GetGridPoints.js';
-
 export default {
     getChessData: GetChessData,
     getChessUID: GetChessUID,
@@ -104,6 +103,7 @@ export default {
     angleSnapToDirection: AngleSnapToDirection,
     isOverlappingPoint: IsOverlappingPoint,
     gridAlign: GridAlign,
+    getGridPoints: GetGridPoints,
 
     lineToTileXYArray: LineToTileXYArray,
     circleToTileXYArray: CircleToTileXYArray,

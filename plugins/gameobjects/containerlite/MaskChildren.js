@@ -24,7 +24,7 @@ var MaskChildren = function (parent, mask, children) {
         if (child === maskGameObject) {
             continue;
         }
-        if (!parent.getLocalState(child).visible) { // Child is invisible before masking
+        if (!isVisible(child)) {  // Child is invisible before masking
             continue;
         }
 
@@ -49,6 +49,25 @@ var MaskChildren = function (parent, mask, children) {
             }
         } else {
             showSome(parent, child, mask);
+        }
+    }
+}
+
+var isVisible = function (gameObject) {
+    while (1) {
+        var localState = gameObject.rexContainer;
+        if (!localState) { // Top game object
+            return gameObject.visible;
+        } else if (localState.visible) {
+            var parent = localState.parent;
+            if (parent) { // Test parent's visible
+                gameObject = parent;
+                continue;
+            } else { // Top visible game object
+                return true;
+            }
+        } else { // Current game object is invisible
+            return false;
         }
     }
 }

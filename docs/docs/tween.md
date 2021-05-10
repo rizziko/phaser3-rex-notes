@@ -11,10 +11,17 @@ Change properties by tween equations, built-in object of phaser.
 ```javascript
 var tween = scene.tweens.add({
     targets: gameObject,
-    alpha: { from: 0, to: 1 },
-    // alpha: { start: 0, to: 1 },
-    // alpha: 1,
+    alpha: 1,
     // alpha: '+=1',
+    // alpha: { from: 0, to: 1 },
+    // alpha: { start: 0, to: 1 },  
+    // alpha: { start: value0, from: value1, to: value2 },  
+    // alpha: function(target, key, value, targetIndex, totalTargets, tween)  { return newValue; },
+    // alpha: {
+    //      getActive: function (target, key, value, targetIndex, totalTargets, tween) { return newValue; },
+    //      getStart: function (target, key, value, targetIndex, totalTargets, tween) { return newValue; },
+    //      getEnd: function (target, key, value, targetIndex, totalTargets, tween) { return newValue; }
+    // },
     ease: 'Linear',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
     duration: 1000,
     repeat: 0,            // -1: infinity
@@ -22,11 +29,24 @@ var tween = scene.tweens.add({
 });
 ```
 
-- `key: { from: value1, to: value2 }` : Set the property to `value11` when tween started after delay, then tween to `value2`.
-- `key: { start: value0, to: value2 }` : Set the property to `value0` immediately, then tween to `value2`.
-- `key: { start: value0, from: value1, to: value2 }` : Set the property to `value0` immediately, then set to `value1` when tween started after delay, then tween to `value2`.
 - `key: value2` : Tween to `value2`.
 - `key: '+=deltaValue'` : Tween to current value + deltaValue
+    - Support these expressions : `key: '+=deltaValue'`, `key: '-=deltaValue'`, `key: '*=deltaValue'`, `key: '/=deltaValue'`
+- `key: { from: value1, to: value2 }` : Set the property to `value11` when tween started after delay, then tween to `value2`.
+   - `value1`, `value2` : A number, string, or callback(`function(target, key, value, targetIndex, totalTargets, tween)  { return newValue; }`)   
+- `key: { start: value0, to: value2 }` : Set the property to `value0` immediately, then tween to `value2`.
+    - `value1`, `value2` : A number, string, or callback(`function(target, key, value, targetIndex, totalTargets, tween)  { return newValue; }`)  
+- `key: { start: value0, from: value1, to: value2 }` : Set the property to `value0` immediately, then set to `value1` when tween started after delay, then tween to `value2`.
+    - `value0`, `value1`, `value2` : A number, string, or callback(`function(target, key, value, targetIndex, totalTargets, tween)  { return newValue; }`)  
+- `key: function(target, key, value, targetIndex, totalTargets, tween)  { return newValue; }`
+    - `target` :　The tween target.
+    - `key` : The target property.
+    - `value` : The current value of the target property.
+    - `targetIndex` : The index of the target within the Tween.
+    - `totalTargets` : The total number of targets in this Tween.
+    - `tween` : The Tween that invoked this callback.
+- `key: { getActive:callback, getStart:callback, getEnd:callback}`
+    - `callback` : `function(target, key, value, targetIndex, totalTargets, tween)  { return newValue; }`
 
 or
 
@@ -219,7 +239,7 @@ var tween = scene.tweens.add({
 - `props` : The properties being tweened by the tween
 - `onActive` : Tween becomes active within the Tween Manager.
     ```javascript
-    function(tween, targets) { }
+    function(tween, target) { }
     ```
 - `onStart` : A tween starts.
     ```javascript
@@ -227,7 +247,7 @@ var tween = scene.tweens.add({
     ```
 - `onUpdate` : Callback which fired when tween task updated
     ```javascript
-    function(tween, targets) { }
+    function(tween, target) { }
     ```
 - `onComplete` : Tween completes or is stopped.
     ```javascript
@@ -235,7 +255,7 @@ var tween = scene.tweens.add({
     ```
 - `onYoyo` : A tween property yoyos.
     ```javascript
-    function(tween, key, targets) { }
+    function(tween, key, target) { }
     ```
 - `onLoop` : A tween loops, after any loop delay expires.
     ```javascript
@@ -243,7 +263,7 @@ var tween = scene.tweens.add({
     ```
 - `onRepeat` : A tween property repeats, after any repeat delay expires.
     ```javascript
-    function(tween, targets) { }
+    function(tween, target) { }
     ```
 - `onStop` : A tween property stopped.
     ```javascript
@@ -387,7 +407,7 @@ scene.tweens.timeScale = timescale;
     ```
 - A tween property repeats, after any repeat delay expires.
     ```javascript
-    tween.on('repeat', function(tween, key, targets){
+    tween.on('repeat', function(tween, key, target){
 
     }, scope);
     ```
@@ -399,13 +419,18 @@ scene.tweens.timeScale = timescale;
     ```
 - A tween property updates.
     ```javascript
-    tween.on('update', function(tween, key, targets){
+    tween.on('update', function(tween, key, target, current, previous){
 
     }, scope);
     ```
+    - `tween` : A reference to the Tween instance that emitted the event.
+    - `key` : The property that was updated, i.e. `x` or `scale`.
+    - `target` : The target object that was updated. Usually a Game Object, but can be of any type.
+    - `current` : The current value of the property that was tweened.
+    - `previous` : The previous value of the property that was tweened, prior to this update.
 - A tween property yoyos.
     ```javascript
-    tween.on('yoyo', function(tween, key, targets){
+    tween.on('yoyo', function(tween, key, target){
 
     }, scope);
     ```

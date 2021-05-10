@@ -1,31 +1,16 @@
-/**
- * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
- * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
- */
+import FillPathWebGL from '../../utils/render/FillPathWebGL.js';
+import StrokePathWebGL from '../../utils/render/StrokePathWebGL.js';
+import GetCalcMatrix from '../../../utils/GetCalcMatrix.js';
 
-var FillPathWebGL = require('../../utils/FillPathWebGL');
-var GetCalcMatrix = require('../../../utils/GetCalcMatrix');
-var StrokePathWebGL = require('../../utils/StrokePathWebGL');
+var PolygonWebGLRenderer = function (renderer, src, camera, parentMatrix) {
+    if (src.dirty) {
+        src.updateData();
+        src.dirty = false;
+    }
 
-/**
- * Renders this Game Object with the WebGL Renderer to the given Camera.
- * The object will not render if any of its renderFlags are set or it is being actively filtered out by the Camera.
- * This method should not be called directly. It is a utility function of the Render module.
- *
- * @method Phaser.GameObjects.Polygon#renderWebGL
- * @since 3.13.0
- * @private
- *
- * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - A reference to the current active WebGL renderer.
- * @param {Phaser.GameObjects.Polygon} src - The Game Object being rendered in this call.
- * @param {number} interpolationPercentage - Reserved for future use and custom pipelines.
- * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
- * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
- */
-var PolygonWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
-    var pipeline = renderer.pipelines.set(this.pipeline);
+    camera.addToRenderList(src);
+
+    var pipeline = renderer.pipelines.set(src.pipeline);
 
     var result = GetCalcMatrix(src, camera, parentMatrix);
 
@@ -36,15 +21,17 @@ var PolygonWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     var alpha = camera.alpha * src.alpha;
 
-    if (src.isFilled)
-    {
+    renderer.pipelines.preBatch(src);
+
+    if (src.isFilled) {
         FillPathWebGL(pipeline, calcMatrix, src, alpha, dx, dy);
     }
 
-    if (src.isStroked)
-    {
+    if (src.isStroked) {
         StrokePathWebGL(pipeline, src, alpha, dx, dy);
     }
+
+    renderer.pipelines.postBatch(src);
 };
 
-module.exports = PolygonWebGLRenderer;
+export default PolygonWebGLRenderer;

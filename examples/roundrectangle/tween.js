@@ -11,7 +11,6 @@ class Demo extends Phaser.Scene {
 
     create() {
         var rect0 = this.add.rexRoundRectangle(400, 150, 240, 100, 50, 0x008888).setScale(0, 1);
-
         this.tweens.add({
             targets: rect0,
             scaleX: 1, // '+=100'
@@ -22,7 +21,6 @@ class Demo extends Phaser.Scene {
         });
 
         var rect1 = this.add.rexRoundRectangle(400, 300, 0, 0, 30, 0x008888);
-
         this.tweens.add({
             targets: rect1,
             width: '+=200', // '+=100'
@@ -33,7 +31,6 @@ class Demo extends Phaser.Scene {
         });    
         
         var rect2 = this.add.rexRoundRectangle(400, 450, 100, 100, 0, 0x008888);
-
         this.tweens.add({
             targets: rect2,
             radius: '+=50', // '+=100'

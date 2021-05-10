@@ -58,6 +58,10 @@ class InputText extends DOMElement {
 
         // Don't propagate touch/mouse events to parent(game canvas)
         StopPropagationTouchEvents(element);
+
+        if (GetValue(config, 'selectAll', false)) {
+            this.selectAll();
+        }
     }
 
     get text() {
@@ -73,8 +77,29 @@ class InputText extends DOMElement {
         return this;
     }
 
-    selectText() {
-        this.node.select();
+    get maxLength() {
+        return this.node.maxLength;
+    }
+
+    set maxLength(value) {
+        this.node.maxLength = value;
+    }
+
+    setMaxLength(value) {
+        this.maxLength = value;
+        return this;
+    }
+
+    get minLength() {
+        return this.node.minLength;
+    }
+
+    set minLength(value) {
+        this.node.minLength = value;
+    }
+
+    setMinLength(value) {
+        this.minLength = value;
         return this;
     }
 
@@ -88,6 +113,11 @@ class InputText extends DOMElement {
 
     setPlaceholder(value) {
         this.placeholder = value;
+        return this;
+    }
+
+    selectText() {
+        this.node.select();
         return this;
     }
 
@@ -138,6 +168,19 @@ class InputText extends DOMElement {
         return this;
     }
 
+    get fontColor() {
+        return this.node.style.color;
+    }
+
+    set fontColor(value) {
+        this.node.style.color = value;
+    }
+
+    setFontColor(value) {
+        this.fontColor = value;
+        return this;
+    }
+
     setStyle(key, value) {
         this.node.style[key] = value;
         return this;
@@ -169,6 +212,11 @@ class InputText extends DOMElement {
         this.node.focus();
         return this;
     }
+
+    selectAll() {
+        this.node.select();
+        return this;
+    }
 }
 
 var methods = {
@@ -183,9 +231,11 @@ Object.assign(
 const ElementProperties = {
     id: ['id', undefined],
     text: ['value', undefined],
+    maxLength: ['maxLength', undefined],
+    minLength: ['minLength', undefined],
     placeholder: ['placeholder', undefined],
     tooltip: ['title', undefined],
-    readOnly: ['readonly', false],
+    readOnly: ['readOnly', false],
     spellCheck: ['spellcheck', false],
     autoComplete: ['autocomplete', 'off'],
 };

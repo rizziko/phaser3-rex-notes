@@ -8,6 +8,8 @@ A container with an icon, ([typing](texttyping.md) and [paging](textpage.md)) te
 ## Live demos
 
 - [Text box](https://codepen.io/rexrainbow/pen/MzGoJv)
+- [Speech bubble background](https://codepen.io/rexrainbow/pen/ExZLoWL)
+- [Bitmap text](https://codepen.io/rexrainbow/pen/oNBaKOo)
 
 ## Usage
 
@@ -101,7 +103,11 @@ var textBox = scene.rexUI.add.textBox({
     },
 
     // name: '',
-    // draggable: false
+    // draggable: false,
+
+    // page: { maxLines: undefined },
+    // type: { speed: 333 }
+
 });
 ```
 
@@ -119,11 +125,12 @@ var textBox = scene.rexUI.add.textBox({
 - `background` : [Game object of background](ui-basesizer.md#background), optional. This background game object will be resized to fit the size of textBox.
 - `icon` : Game object of icon, optional.
 - `iconMask` : Set true to add a *circle* mask on icon game object.
-- `text` : Game object of text.
+- `text` : [Text object](text.md), [bbcode text object](bbcodetext.md), [tag text boject](tagtext.md), or [bitmap text object](bitmaptext.md)
     - Max lines and wrapped width
         - [Built-in text object](text.md) : `maxLines` and wrap width (`wordWrap.width`).
         - [BBcode text object](bbcodetext.md) : `maxLines` and wrap width (`wrap.width`).
         - [Tag text object](tagtext.md) : `maxLines` and wrap width (`wrap.width`).
+        - [Bitmap text object](bitmaptext.md) : Set maxLines at `page.maxLines` in configuration of page behavior, and wrap width at `text.setMaxWidth(width)`.
     - Fixed width and fixed height
         - [Built-in text object](text.md) : `fixedWidth` and `fixedHeight`, set to `0` to disable this feature.
         - [BBcode text object](bbcodetext.md) : `fixedWidth` and `fixedHeight`, set to `0` to disable this feature.
@@ -136,6 +143,10 @@ var textBox = scene.rexUI.add.textBox({
     - `space.text` : Space between text game object and action icon game object.
 - `name` : Set name of this textBox.
 - `draggable` : Set `true` to drag to-most sizer.
+- `page` : Configuration of [page behavior](textpage.md#create-instance)
+    - `page.maxLines` : Max lines of a page.
+- `type` : Configuration of [type behavior](texttyping.md#create-instance)
+    - `type.speed` : Typing speed in ms, default value is `333`.
 
 ### Custom class
 
@@ -163,6 +174,7 @@ var textBox = scene.rexUI.add.textBox({
     ```
     - `content` : Content string.
     - `speed` : Typing speed in ms.
+        - `undefined` : Use previous typing speed.
 - Stop
     ```javascript
     textBox.stop();
@@ -183,6 +195,11 @@ var textBox = scene.rexUI.add.textBox({
     ```javascript
     var isTyping = textBox.isTyping;
     ```
+- Change typing speed
+    ```javascript
+    textBox.setTypeSpeed(speed);
+    ```
+    - `speed` : Typing speed in ms.
 
 ### Page
 

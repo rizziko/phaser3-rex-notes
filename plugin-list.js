@@ -4,9 +4,14 @@ module.exports = {
     'tagtextplugin': './plugins/tagtext-plugin.js',
     'canvasplugin': './plugins/canvas-plugin.js',
     'circlemaskimageplugin': './plugins/circlemaskimage-plugin.js',
+    'circularprogresscanvasplugin': './plugins/circularprogresscanvas-plugin.js',    
+    'roundrectanglecanvasplugin': './plugins/roundrectanglecanvas-plugin.js',
+    'dynamictextplugin': './plugins/dynamictext-plugin.js',
     'containerliteplugin': './plugins/containerlite-plugin.js',
     'gridtableplugin': './plugins/gridtable-plugin.js',
     'roundrectangleplugin': './plugins/roundrectangle-plugin.js',
+    'customshapesplugin': './plugins/customshapes-plugin.js',
+    'circularprogressplugin': './plugins/circularprogress-plugin.js',
     'inputtextplugin': './plugins/inputtext-plugin.js',
     'youtubeplayerplugin': './plugins/youtubeplayer-plugin.js',
     'persistenceeffectplugin': './plugins/persistenceeffect-plugin.js',
@@ -92,6 +97,7 @@ module.exports = {
     'conditionstableplugin': './plugins/conditionstable-plugin.js',
     'questplugin': './plugins/quest-plugin.js',
     'loopinticksplugin': './plugins/loopinticks-plugin.js',
+    'bracketparserplugin': './plugins/bracketparser-plugin.js',
 
     // time
     'clockplugin': './plugins/clock-plugin.js',
@@ -110,6 +116,7 @@ module.exports = {
     'gashaponplugin': './plugins/gashapon-plugin.js',
     'perlinplugin': './plugins/perlin-plugin.js',
     'raycasterplugin': './plugins/raycaster-plugin.js',
+    'expressionparserplugin': './plugins/expressionparser-plugin.js',
     // geom
     'rhombusplugin': './plugins/rhombus-plugin.js',
     'hexagonplugin': './plugins/hexagon-plugin.js',
@@ -129,6 +136,7 @@ module.exports = {
     'glowfilterpipelineplugin': './plugins/glowfilterpipeline-plugin.js',
     'toonifypipelineplugin': './plugins/toonifypipeline-plugin.js',
     'outlinepipelineplugin': './plugins/outlinepipeline-plugin.js',
+    'dissolvepipelineplugin': './plugins/dissolvepipeline-plugin.js',
 
     // board
     'boardplugin': './plugins/board-plugin.js',
@@ -146,6 +154,7 @@ module.exports = {
     'bejeweled': './templates/bejeweled/Bejeweled.js',
     'uiplugin': './templates/ui/ui-plugin.js',
     'dialogquest': './templates/dialog-quest/DialogQuest.js',
+    'spinnerplugin': './templates/spinner/spinner-plugin.js',
 
     // Plain class
     // rex ui
@@ -155,6 +164,11 @@ module.exports = {
     'fixwidthbuttons': './templates/ui/fixwidthbuttons/FixWidthButtons.js',
     'canvas': './templates/ui/canvas/Canvas.js',
     'circlemaskimage': './templates/ui/circlemaskimage/CircleMaskImage.js',
+    'dynamictext': './templates/ui/dynamictext/DynamicText.js',
+    'circularprogresscanvas': './templates/ui/circularprogresscanvas/CircularProgressCanvas.js',
+    'circularprogress': './templates/ui/circularprogress/CircularProgress.js',
+    'knob': './templates/ui/knob/Knob.js',
+    'customshapes': './templates/ui/customshapes/CustomShapes.js',
     'chart': './templates/ui/chart/Chart.js',
     'dialog': './templates/ui/dialog/Dialog.js',
     'fixwidthsizer': './templates/ui/fixwidthsizer/FixWidthSizer.js',
@@ -171,6 +185,7 @@ module.exports = {
     'press': './templates/ui/press/Press.js',
     'rotate': './templates/ui/rotate/Rotate.js',
     'roundrectangle': './templates/ui/roundrectangle/RoundRectangle.js',
+    'roundrectanglecanvas': './templates/ui/roundrectanglecanvas/RoundRectangleCanvas.js',
     'scrollablepanel': './templates/ui/scrollablepanel/ScrollablePanel.js',
     'sizer': './templates/ui/sizer/Sizer.js',
     'slider': './templates/ui/slider/Slider.js',
@@ -182,6 +197,24 @@ module.exports = {
     'textbox': './templates/ui/textbox/TextBox.js',
     'toast': './templates/ui/toast/Toast.js',
     'sides': './templates/ui/sides/Sides.js',
+    // spinner
+    'audiospinner': './templates/spinner/audio/Audio.js',
+    'ballspinner': './templates/spinner/ball/Ball.js',
+    'barsspinner': './templates/spinner/bars/Bars.js',
+    'boxspinner': './templates/spinner/box/Box.js',
+    'clockspinner': './templates/spinner/clock/Clock.js',
+    'cubespinner': './templates/spinner/cube/Cube.js',
+    'customspinner': './templates/spinner/custom/Custom.js',
+    'dotsspinner': './templates/spinner/dots/Dots.js',
+    'facebookspinner': './templates/spinner/facebook/Facebook.js',
+    'gridspinner': './templates/spinner/grid/Grid.js',
+    'losspinner': './templates/spinner/los/Los.js',
+    'orbitspinner': './templates/spinner/orbit/Orbit.js',
+    'ovalspinner': './templates/spinner/oval/Oval.js',
+    'puffspinner': './templates/spinner/puff/Puff.js',
+    'radiospinner': './templates/spinner/radio/Radio.js',
+    'ringsspinner': './templates/spinner/rings/Rings.js',
+    'spinner': './templates/spinner/spinner/Spinner.js',    
     // others
     'firebase': './plugins/firebase.js',
     'parse': './plugins/parse.js'

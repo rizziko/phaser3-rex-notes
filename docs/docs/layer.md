@@ -4,6 +4,7 @@ A local display list, built-in game object of phaser.
 
 !!! warning "Layers have no position or size"
     Layers have no position or size within the Scene  
+
     - Cannot enable a Layer for physics or input.
     - Cannot change the position, rotation or scale of a Layer. 
     - No scroll factor, texture, tint, origin, crop or bounds.
@@ -19,7 +20,10 @@ A local display list, built-in game object of phaser.
 
 ```javascript
 var layer = scene.add.layer();
+// var layer = scene.add.layer(children);
 ```
+
+- `children` : Array of game objects added to this layer.
 
 ### Custom class
 

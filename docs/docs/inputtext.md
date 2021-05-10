@@ -124,6 +124,8 @@ Default configuration
     // Element properties
     id: undefined,
     text: undefined,
+    maxLength: undefined,
+    minLength: undefined,    
     placeholder: undefined,
     tooltip: undefined,
     readOnly: false,
@@ -143,6 +145,8 @@ Default configuration
     backgroundColor: 'transparent',
     borderColor: 'transparent',
     outline: 'none',
+
+    selectAll: false
 }
 ```
 
@@ -153,6 +157,8 @@ Default configuration
 - Element properties
     - `id` : `id` element property.
     - `text` : `value` element property.
+    - `maxLength` : `maxLength` element property.
+    - `minLength` : `minLength` element property.
     - `placeholder` : `placeholder` element property.
     - `tooltip` : `title` element property.
     - `readOnly` : `readonly` element property.
@@ -164,9 +170,10 @@ Default configuration
     - `fontFamily` : `font-family` style property.
     - `fontSize` : `font-size` style property.
     - `color` : `color` style property.
-    - `backgroundColor` : `backgroundColor` style property.    
+    - `backgroundColor` : `backgroundColor` style property.
     - `border`, `borderColor` : `border`, `borderColor` style property.
     - `outline` : `outline` style property.
+- `selectAll` : Set `true` to select all text.
 
 ### Custom class
 
@@ -233,11 +240,95 @@ Default configuration
     inputText.setBlur();
     ```
 
+### Font color
+
+- Get
+    ```javascript
+    var color = inputText.fontColor;
+    // var color = inputText.node.style.color;
+    ```
+- Set
+    ```javascript
+    inputText.fontColor = color;  // CSS color string
+    // inputText.node.style.color = color;
+    ```
+    or
+    ```javascript
+    inputText.setFontColor(color);  // CSS color string
+    ```
+
+### Max length
+
+- Get
+    ```javascript
+    var value = inputText.maxLength;
+    ```
+- Set
+    ```javascript
+    inputText.maxLength = value;
+    ```
+    or
+    ```javascript
+    inputText.setMaxLength(value);
+    ```
+
+### Min length
+
+- Get
+    ```javascript
+    var value = inputText.minLength;
+    ```
+- Set
+    ```javascript
+    inputText.minLength = value;
+    ```
+    or
+    ```javascript
+    inputText.setMinLength(value);
+    ```
+
+### Placeholder
+
+- Get
+    ```javascript
+    var value = inputText.placeholder;
+    ```
+- Set
+    ```javascript
+    inputText.placeholder = value;
+    ```
+    or
+    ```javascript
+    inputText.setPlaceholder(value);
+    ```
+
+### Tooltip
+
+- Get
+    ```javascript
+    var value = inputText.tooltip;
+    ```
+- Set
+    ```javascript
+    inputText.tooltip = value;
+    ```
+    or
+    ```javascript
+    inputText.setTooltip(value);
+    ```
+
 ### Resize
 
 ```javascript
 inputText.resize(width, height);
 ```
+
+### Select text
+
+- Select all text
+    ```javascript
+    inputText.selectAll();
+    ```
 
 ### Events
 

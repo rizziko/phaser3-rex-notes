@@ -83,11 +83,11 @@ scene.sound.decodeAudio(audioFiles);
 
 ### Play sound
 
-Sound instance will be destroyed when playback ends.
-
 ```javascript
 scene.sound.play(key);
 ```
+
+Sound instance will be destroyed when playback ends.
 
 ### Sound instance
 
@@ -217,7 +217,7 @@ var music = scene.sound.add(key, config);
 
 - Duration : duration of this sound
     ```javascript
-    var duratuin = music.duration;
+    var duration = music.duration;
     ```
 - Is playing
     ```javascript

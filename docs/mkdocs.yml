@@ -46,6 +46,7 @@ nav:
             - Render texture: perspective-rendertexture.md
             - Card: perspective-card.md
             - Carousel: perspective-carousel.md
+            - Image carousel: perspective-imagecarousel.md
         - Shatter image: shatter-image.md
         - Rope: rope.md
     - Text:
@@ -53,6 +54,7 @@ nav:
             - Text: text.md
             - BBCode Text: bbcodetext.md
             - Tag Text: tagtext.md
+            - Dynamic text: dynamictext.md
         - Bitmap text:
             - Static bitmap text: bitmaptext.md
             - Dynamic bitmap text: dynamicbitmaptext.md
@@ -77,7 +79,13 @@ nav:
             - Iso box: shape-isobox.md
             - Iso triangle: shape-isotriangle.md
             - Round Rectangle: shape-roundrectangle.md
-        - Canvas: canvas.md
+            - Circular progres: shape-circularprogress.md
+            - Spinner: shape-spinner.md
+            - Custom shapes: shape-custom-shapes.md
+        - Canvas:
+            - Canvas: canvas.md
+            - Round rectangle: canvas-roundrectangle.md
+            - Circular progres: canvas-circularprogress.md
         - Canvas texture: canvas-texture.md
     - Tile map:
         - Tile map: tilemap.md
@@ -167,24 +175,26 @@ nav:
 - Camera:
     - Camera: camera.md
     - Effects: camera-effects.md
-    - Controllor: camera-controllor.md    
-    - Shader effects:
-        - Post fx pipeline: postfx-pipeline.md
-        - Shader effect: camera-shader-effect.md
-        - Color:
-            - Glow: shader-glowfilter.md
-            - Gray scale: shader-grayscale.md
-            - Inverse: shader-inverse.md
-            - HSL adjust: shader-hsladjust.md
-        - Outline:
-            - Outline: shader-outline.md
-            - Toonify: shader-toonify.md
-        - Position:
-            - Swirl: shader-swirl.md
-            - Pixelation: shader-pixelation.md
+    - Shader effect: camera-shader-effect.md
+    - Controllor: camera-controllor.md
 - Tween:
     - Tween task: tween.md
     - Timeline: tween-timeline.md
+- Shader effects:
+    - Post fx pipeline: postfx-pipeline.md    
+    - Color:
+        - Glow: shader-glowfilter.md
+        - Gray scale: shader-grayscale.md
+        - Inverse: shader-inverse.md
+        - HSL adjust: shader-hsladjust.md
+    - Outline:
+        - Outline: shader-outline.md
+        - Toonify: shader-toonify.md
+    - Position:
+        - Swirl: shader-swirl.md
+        - Pixelation: shader-pixelation.md
+    - Transition:
+        - Dissolve: shader-dissolve.md
 - Logic:
     - Events:
       - Event emitter: eventemitter3.md
@@ -198,21 +208,23 @@ nav:
           - Recoder: tcrp-recoder.md
           - Player: tcrp-player.md
       - Arcade-TCRP:
-          - Recoder: arcade-tcrp-recoder.md
+          - Recoder: arcade-tcrp-recorder.md
           - Step runner: arcade-tcrp-step-runner.md
           - Player: arcade-tcrp-player.md          
-    - FSM: fsm.md    
+    - FSM: fsm.md
     - CSV table:
         - Conditions table: conditionstable.md
     - Quest: 
         - Quest: quest.md
         - Dialog-quest: dialog-quest.md
+    - Bracket parser: bracketparser.md
 - Data:
     - Data manager: 
         - Built-in data: datamanager.md
         - Restorable data: restorabledata.md
         - Buff data: buffdata.md
     - Set: structs-set.md
+    - List: structs-list.md
     - Array:
         - Add/remove: array-addremove.md
         - Sort: array-sort.md
@@ -260,6 +272,7 @@ nav:
         - Path : path.md
         - Spiral curve: curve-spiral.md
     - Raycaster: raycaster.md
+    - Expression parser: expression-parser.md
 - String:
     - Format:
         - Format: format.md
@@ -297,6 +310,7 @@ nav:
     - Tabs: ui-tabs.md
     - Menu: ui-menu.md
     - Number bar: ui-numberbar.md
+    - Knob: ui-knob.md
     - Pages: ui-pages.md    
     - Scroll-able panel: ui-scrollablepanel.md
     - Chart: ui-chart.md
@@ -315,6 +329,7 @@ nav:
     - Field of view: board-fieldofview.md
     - Match: board-match.md
     - Hexagon map: board-hexagonmap.md
+    - Tile texture: board-texture.md
     - Mini board:
         - Mini board: board-miniboard.md
     - Bejeweled: board-bejeweled.md

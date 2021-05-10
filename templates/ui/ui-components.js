@@ -1,9 +1,15 @@
 import RoundRectangle from './roundrectangle/RoundRectangle.js';
+import RoundRectangleCanvas from './roundrectanglecanvas/RoundRectangleCanvas.js';
 import BBCodeText from './bbcodetext/BBCodeText.js';
 import TagText from './tagtext/TagText.js';
 import Container from './container/Container.js';
 import Canvas from './canvas/Canvas.js';
 import CircleMaskImage from './circlemaskimage/CircleMaskImage.js';
+import DynamicText from './dynamictext/DynamicText.js';
+import CircularProgressCanvas from './circularprogresscanvas/CircularProgressCanvas.js';
+import CircularProgress from './circularprogress/CircularProgress.js';
+import Knob from './knob/Knob.js';
+import CustomShapes from './customshapes/CustomShapes.js';
 import Chart from './chart/Chart.js';
 import NinePatch from './ninepatch/NinePatch.js';
 
@@ -24,9 +30,7 @@ import Menu from './menu/Menu.js';
 import TextBox from './textbox/TextBox.js';
 import NumberBar from './numberbar/NumberBar.js';
 import Pages from './pages/Pages.js';
-import TextBlock from './textblock/TextBlock.js';
 import TextArea from './textarea/TextArea.js';
-import ScrollableBlock from './scrollableblock/ScrollableBlock.js';
 import ScrollablePanel from './scrollablepanel/ScrollablePanel.js';
 import Toast from './toast/Toast.js';
 import Sides from './sides/Sides.js';
@@ -49,20 +53,26 @@ import {
     IsShown,
 } from './utils/Hide.js';
 import Edit from '../../plugins/behaviors/textedit/Edit.js';
+import WrapExpandText from './utils/wrapexpandtext/WrapExpandText.js';
 import { WaitEvent, WaitComplete } from './utils/WaitEvent.js';
 import GetViewport from '../../plugins/utils/system/GetViewport.js';
 import SetChildrenInteractive from './utils/setchildreninteractive/SetChildrenInteractive.js';
 
 export {
     RoundRectangle,
+    RoundRectangleCanvas,
     BBCodeText,
     TagText,
     Container,
     Canvas,
     CircleMaskImage,
+    DynamicText,
     Chart,
+    CircularProgressCanvas,
+    CircularProgress,
+    Knob,
+    CustomShapes,
     NinePatch,
-    PerspectiveCard,
 
     Sizer,
     GridSizer,
@@ -81,9 +91,7 @@ export {
     TextBox,
     NumberBar,
     Pages,
-    TextBlock,
     TextArea,
-    ScrollableBlock,
     ScrollablePanel,
     Toast,
     Sides,
@@ -105,6 +113,7 @@ export {
     Hide,
     IsShown,
     Edit,
+    WrapExpandText,
     WaitEvent,
     WaitComplete,
     GetViewport,

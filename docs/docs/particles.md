@@ -32,6 +32,7 @@ Reference: [load image](loader.md#image)
         ```javascript
         var particles = scene.make.particles({
             key: key,
+            // origin: {x: 0.5, y: 0.5},
             add: true,
             emitters: [
                 emitterConfig0,
@@ -267,7 +268,7 @@ emitter.setEmitZone({
     - [Curve](path.md) source has *quantity*, or *stepRate*
     - [Path](path.md) source only has *quantity*
 
-#### Curve surce
+#### Curve source
 
 - Get curve source
     ```javascript

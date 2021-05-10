@@ -134,6 +134,7 @@ var table = scene.make.rexGridTable({
 
     // cellsCount: 0,   // total cells count
     // ...
+    // origin: {x: 0.5, y: 0.5},
 });
 ```
 
@@ -231,7 +232,7 @@ It is equal to `cellVisibleCallback` in configuration.
                 ```javascript
                 cell.setDeltaWidth(0);
                 // cell.deltaWidth = 0;
-                ```            
+                ```
     - Assign cell container. Set origin point of this cell container to (0,0).
         ```javascript
         cell.setContainer(cellContainer);
@@ -432,6 +433,11 @@ var cell = table.getCell(cellIndex);
         ```javascript
         table.updateTable(true);
         ```
+    - Emit `'cellheightchange'` event.
+        ```javascript
+        table.on('cellheightchange', function () {
+        });
+        ```
 
 #### Cell width
 
@@ -451,6 +457,11 @@ var cell = table.getCell(cellIndex);
     - Refresh table after the cell size is changed.
         ```javascript
         table.updateTable(true);
+        ```
+    - Emit `'cellwidthchange'` event.
+        ```javascript
+        table.on('cellwidthchange', function () {
+        });
         ```
 
 #### Fore each visible cell

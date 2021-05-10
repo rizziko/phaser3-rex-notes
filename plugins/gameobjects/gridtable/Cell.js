@@ -108,7 +108,14 @@ class Cell {
             table.nonZeroDeltaHeightCount--;
         }
 
+        var tableHeightChanged = (this._deltaHeight !== deltaHeight);
+
         this._deltaHeight = deltaHeight;
+
+        if (tableHeightChanged) {
+            var eventName = (this.scrollMode === 0) ? 'cellheightchange' : 'cellwidthchange';
+            this.parentContainer.emit(eventName);
+        }
     }
 
     get deltaWidth() {

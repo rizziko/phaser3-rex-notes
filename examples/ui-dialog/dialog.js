@@ -18,7 +18,7 @@ class Demo extends Phaser.Scene {
 
             background: this.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x1565c0),
 
-            title: createLabel(this, 'Title').setDraggable(),
+            title: createLabel(this, 'Title'),
 
             toolbar: [
                 createLabel(this, 'O'),

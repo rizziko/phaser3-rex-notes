@@ -8,6 +8,7 @@ A container with a text, slider, and scroller.
 ## Live demos
 
 - [Text-area](https://codepen.io/rexrainbow/pen/JzBZzy)
+- [Bitmap text](https://codepen.io/rexrainbow/pen/YzNRRaz)
 
 ## Usage
 
@@ -66,7 +67,7 @@ A container with a text, slider, and scroller.
     import { TextArea } from 'phaser3-rex-plugins/templates/ui/ui-components.js';
     ```
 - Add text-area object
-    ```javascript    
+    ```javascript
     var textArea = new TextArea(scene, config);
     sscene.add.existing(textArea);
     ```
@@ -147,7 +148,7 @@ var textArea = scene.rexUI.add.textArea({
         - Offset : `'+n'`, or `'-n'`.
 - `width`, `height` : Minimum width, minimum height.
 - `background` : [Game object of background](ui-basesizer.md#background), optional. This background game object will be resized to fit the size of text area.
-- `text` : Game object of text.
+- `text` : [Text object](text.md), [bbcode text object](bbcodetext.md), [tag text boject](tagtext.md), or [bitmap text object](bitmaptext.md)
 - `textWidth` : Fixed width of text game object. Set `undefined` to ignore this feature.
 - `textHeight` : Fixed height of text game object. Set `undefined` to ignore this feature.
 - `slider` : Componments of slider, optional.
@@ -324,7 +325,7 @@ See also - [dirty](ui-basesizer.md#dirty)
 
 - On scroll
     ```javascript
-    textArea.on('scroll', function(panel) {
+    textArea.on('scroll', function(textArea) {
         // ...
     })
     ```

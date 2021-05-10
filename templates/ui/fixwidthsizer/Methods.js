@@ -1,8 +1,9 @@
 import GetChildrenWidth from './GetChildrenWidth.js';
 import GetChildrenHeight from './GetChildrenHeight.js';
 import GetChildrenSizers from './GetChildrenSizers.js';
-import _layout from './Layout.js';
-import _layoutInit from './_layoutInit.js';
+import PreLayout from './PreLayout.js';
+import LayoutChildren from './LayoutChildren.js';
+import RunWidthWrap from './RunWidthWrap.js';
 import AddChildMethods from './AddChildMethods.js';
 import RemoveChildMethods from './RemoveChildMethods.js';
 
@@ -10,8 +11,9 @@ var methods = {
     getChildrenWidth: GetChildrenWidth,
     getChildrenHeight: GetChildrenHeight,
     getChildrenSizers: GetChildrenSizers,
-    _layout: _layout,
-    _layoutInit: _layoutInit
+    preLayout: PreLayout,
+    layoutChildren: LayoutChildren,
+    runWidthWrap: RunWidthWrap,
 };
 
 Object.assign(

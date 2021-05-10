@@ -9,7 +9,7 @@ Iso-box shape, built-in game object of phaser.
 ### Create shape object
 
 ```javascript
-var isoBox = scene.add.isobox(x, y, size, height, fillTop, fillLeft, fillRight);
+var isoBox = scene.add.isobox(x, y, width, height, fillTop, fillLeft, fillRight);
 ```
 
 ### Custom class
@@ -17,8 +17,8 @@ var isoBox = scene.add.isobox(x, y, size, height, fillTop, fillLeft, fillRight);
 - Define class
     ```javascript
     class MyIsoBox extends Phaser.GameObjects.IsoBox {
-        constructor(scene, x, y, size, height, fillTop, fillLeft, fillRight) {
-            super(scene, x, y, size, height, fillTop, fillLeft, fillRight);
+        constructor(scene, x, y, width, height, fillTop, fillLeft, fillRight) {
+            super(scene, x, y, width, height, fillTop, fillLeft, fillRight);
             // ...
             scene.add.existing(this);
         }
@@ -32,7 +32,7 @@ var isoBox = scene.add.isobox(x, y, size, height, fillTop, fillLeft, fillRight);
         - If it has a `preUpdate` method, it will be added to the Update List.
 - Create instance
     ```javascript
-    var isoBox = new MyIsoBox(scene, x, y, size, height, fillTop, fillLeft, fillRight);
+    var isoBox = new MyIsoBox(scene, x, y, width, height, fillTop, fillLeft, fillRight);
     ```
 
 ### Set color
@@ -64,6 +64,23 @@ var isoBox = scene.add.isobox(x, y, size, height, fillTop, fillLeft, fillRight);
    ```javascript
    isoBox.projection = value;
    ```
+
+### Display size
+
+- Get
+    ```javascript
+    var width = isoBox.displayWidth;
+    var height = isoBox.displayHeight;
+    ```
+- Set
+    ```javascript
+    isoBox.setDisplaySize(width, height);
+    ```
+    or
+    ```javascript
+    isoBox.displayWidth = width;
+    isoBox.displayHeight = height;
+    ```
 
 ### Other properties
 

@@ -108,7 +108,7 @@ var perspectiveimage = scene.make.rexShatterImage({
     frame: null,
 
     // variation: 0.25,
-    // samplesPerRing: 12
+    // samplesPerRing: 12,
 
     add: true
 });
@@ -157,7 +157,7 @@ Shatter image into triangle faces.
 var shatterCenter = image.shatterCenter; // {x, y}
 ```
 
-### Faces 
+### Faces
 
 ```javascript
 var faces = image.faces;
@@ -180,7 +180,7 @@ Faces will be sorted nearby shatter-center to far away.
         ```javascript
         face.setAlpha(value);
         ```
-- Angle    
+- Angle
     - Get
         ```javascript
         var radians = face.rotation;
@@ -253,4 +253,12 @@ scene.tweens.add({
         image.stopUpdate()
     }
 });
+```
+
+### Reset image
+
+Display original image with 2 faces.
+
+```javascript
+image.resetImage();
 ```

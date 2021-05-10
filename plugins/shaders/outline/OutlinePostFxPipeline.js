@@ -1,13 +1,16 @@
-import FragSrc from './outline-postfxfrag.js';
+import GetFrag from './outline-postfxfrag.js';
 
 const PostFXPipeline = Phaser.Renderer.WebGL.Pipelines.PostFXPipeline;
 const GetValue = Phaser.Utils.Objects.GetValue;
 const IntegerToRGB = Phaser.Display.Color.IntegerToRGB;
 const Color = Phaser.Display.Color;
 
+var Quality = 0.1;
+var FragSrc = GetFrag(Quality);
 class OutlinePostFxPipeline extends PostFXPipeline {
     constructor(game) {
         super({
+            name: 'rexOutlinePostFx',
             game: game,
             renderTarget: true,
             fragShader: FragSrc
@@ -19,17 +22,18 @@ class OutlinePostFxPipeline extends PostFXPipeline {
 
     resetFromJSON(o) {
         this.setThickness(GetValue(o, 'thickness', 3));
-        this.setOutlineColor(GetValue(o, 'outlineColor', 0x000000));
+        this.setOutlineColor(GetValue(o, 'outlineColor', 0xffffff));
         return this;
     }
 
     onPreRender() {
-        this.set2f('thickness', this._thickness, this._thickness);
-        this.set3f('outlineColor', this._outlineColor.redGL, this._outlineColor.greenGL, this._outlineColor.blueGL);
+        this.set1f('thickness', this._thickness);
+        if (this._thickness > 0) {
+            this.set3f('outlineColor', this._outlineColor.redGL, this._outlineColor.greenGL, this._outlineColor.blueGL);
+        }
         this.set2f('texSize', this.renderer.width, this.renderer.height);
     }
 
-    // thickness
     get thickness() {
         return this._thickness;
     }
@@ -43,7 +47,6 @@ class OutlinePostFxPipeline extends PostFXPipeline {
         return this;
     }
 
-    // outlineColor
     get outlineColor() {
         return this._outlineColor;
     }
@@ -58,6 +61,15 @@ class OutlinePostFxPipeline extends PostFXPipeline {
     setOutlineColor(value) {
         this.outlineColor = value;
         return this;
+    }
+
+    static setQuality(quality) {
+        Quality = quality;
+        FragSrc = GetFrag(quality);
+    }
+
+    static getQuality() {
+        return Quality;
     }
 }
 

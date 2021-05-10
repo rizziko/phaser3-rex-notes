@@ -21,17 +21,21 @@ var Utils = Phaser.Renderer.WebGL.Utils;
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var TextWebGLRenderer = function (renderer, src,  camera, parentMatrix) {
+var TextWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     if ((src.width === 0) || (src.height === 0)) {
         return;
     }
+
+    camera.addToRenderList(src);
 
     var frame = src.frame;
     var width = frame.width;
     var height = frame.height;
     var getTint = Utils.getTintAppendFloatAlpha;
-    var pipeline = renderer.pipelines.set(this.pipeline, src);
+    var pipeline = renderer.pipelines.set(src.pipeline, src);
     var textureUnit = pipeline.setTexture2D(frame.glTexture, src);
+
+    renderer.pipelines.preBatch(src);
 
     pipeline.batchTexture(
         src,
@@ -56,6 +60,8 @@ var TextWebGLRenderer = function (renderer, src,  camera, parentMatrix) {
         false,
         textureUnit
     );
+
+    renderer.pipelines.postBatch(src);
 };
 
 module.exports = TextWebGLRenderer;

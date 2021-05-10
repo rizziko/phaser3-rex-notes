@@ -171,13 +171,6 @@ container.removeAll();
 // container.removeAll(true);  // remove all children objects and destroy them
 ```
 
-#### Replace child
-
-```javascript
-container.replace(oldChild, newChild);
-// container.replace(oldChild, newChild, true);  // destroy oldChild
-```
-
 #### Order of child
 
 ```javascript
@@ -212,6 +205,13 @@ container.reverse();
 container.shuffle();
 ```
 
+#### Replace child
+
+```javascript
+container.replace(oldChild, newChild);
+// container.replace(oldChild, newChild, true);  // destroy oldChild
+```
+
 #### Set properties
 
 ```javascript
@@ -225,19 +225,29 @@ container.setAll(property, value, startIndex, endIndex);
     container.iterate(callback);
     // container.iterate(callback, context);
     // container.iterate(callback, context, arg0, arg1, ...);
-    // var callback = function(child, arg0, arg1, ...) {};
     ```
+    - `callback` : 
+        ```javascript
+        function(child, arg0, arg1, ...) {
+
+        }
+        ```    
 - Iterate a copy of current children list
     ```javascript
     container.each(callback);
     // container.each(callback, context);
     // container.each(callback, context, arg0, arg1, ...);
-    // var callback = function(child, arg0, arg1, ...) {};
     ```
+    - `callback` : 
+        ```javascript
+        function(child, arg0, arg1, ...) {
+
+        }
+        ```
 
 ## Compare with [group object](group.md)
 
 - Container and group objects are all have a children list.
 - Container has position, angle, alpha, visible, ...etc, but group does not have.
 - Container controls properties of children (position, angle, alpha, visible, ...etc), but group won't.
-- A game object could be added to many group, but it only could be added to a container (`exclusive` mode).
+- A game object could be added to many groups, but it only could be added to one container (`exclusive` mode).

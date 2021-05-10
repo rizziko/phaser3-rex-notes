@@ -87,7 +87,8 @@ var canvas = scene.make.rexCanvas({
     width: 256,
     height: 256,
 
-    //fill: null,
+    // origin: {x: 0.5, y: 0.5},
+    // fill: null,
     
     add: true
 });
@@ -147,14 +148,17 @@ var canvas = scene.make.rexCanvas({
     ```javascript
     canvas.needRedraw();
     ```
+    or
+    ```javascript
+    canvas.dirty = true;
+    ```
 - Update texture now
     ```javascript
     canvas.updateTexture();
     ```
     or update canvas and texture
     ```javascript
-    var callback = function(canvasElem, context) { };
-    canvas.updateTexture(callback);
+    canvas.updateTexture(function(canvasElem, context) { });
     // canvas.updateTexture(callback, scope);
     ```
 

@@ -26,7 +26,6 @@ var rope = scene.add.rope(x, y, texture, frame, points, horizontal);
 
 - `points` : 
     - A number : Segments to split the texture frame into.
-       - `2` : [Rope](quad.md)
     - An number array : An array containing the vertices data.
 - `horizontal` : 
     - `true` : Vertices of this Rope be aligned horizontally.
@@ -51,7 +50,8 @@ var rope = scene.make.rope({
     // alpha: 1
     // flipX: true,
     // flipY: true,
-
+    // origin: {x: 0.5, y: 0.5},
+    
     add: true
 });
 ```
@@ -94,7 +94,6 @@ rope.setPoints(points);
 
 - `points` : 
     - A number : Segments to split the texture frame into.
-       - `2` : [Rope](quad.md)
     - An number array : An array containing the vertices data.
 - `colors` : An optional array containing the color data for this Rope. One color value per pair of vertices.
 - `alphas` : An optional array containing the alpha data for this Rope. One alpha value per pair of vertices.

@@ -6,6 +6,7 @@ import GetEndPoint from './GetEndPoint.js';
 import UpdateThumb from './UpdateThumb.js';
 import UpdateIndicator from './UpdateIndicator.js';
 import ResizeGameObject from '../../../plugins/utils/size/ResizeGameObject.js';
+import EaseValueMethods from '../utils/EaseValueMethods.js';
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 const Clamp = Phaser.Math.Clamp;
@@ -31,6 +32,11 @@ class Slider extends Sizer {
         }
 
         if (track) {
+            if (this.orientation === 1) { // Vertical slider, set minHeight of track to 0
+                track.minHeight = 0;
+            } else { // Horizontal slider, set minWidth of track to 0
+                track.minWidth = 0;
+            }
             this.add(track, 1, 'center', 0, true);
         }
 
@@ -75,7 +81,10 @@ class Slider extends Sizer {
         }
         this.setEnable(GetValue(config, 'enable', undefined));
         this.setGap(GetValue(config, 'gap', undefined));
-        this.setValue(GetValue(config, 'value', 0));
+        this.setValue(GetValue(config, 'value', 0), GetValue(config, 'min', undefined), GetValue(config, 'max', undefined));
+
+        this.setEaseValueDuration(GetValue(config, 'easeValue.duration', 0));
+        this.setEaseValueFunction(GetValue(config, 'easeValue.ease', 'Linear'));
     }
 
     setEnable(enable) {
@@ -137,19 +146,13 @@ class Slider extends Sizer {
         return value;
     }
 
-    _layout(parent, newWidth, newHeight) {
+    runLayout(parent, newWidth, newHeight) {
         // Skip hidden or !dirty sizer
-        if (this.rexSizer.hidden || (!this.dirty)) {
+        if (this.ignoreLayout) {
             return this;
         }
 
-        var track = this.getElement('track');;
-        if (this.orientation === 1) { // Vertical slider, set height of track to 0
-            ResizeGameObject(track, undefined, 0);
-        } else { // Horizontal slider, set width of track to 0
-            ResizeGameObject(track, 0, undefined);
-        }
-        super._layout(parent, newWidth, newHeight);
+        super.runLayout(parent, newWidth, newHeight);
         this.updateThumb();
         this.updateIndicator();
         return this;
@@ -168,9 +171,11 @@ var methods = {
     updateThumb: UpdateThumb,
     updateIndicator: UpdateIndicator,
 }
+
 Object.assign(
     Slider.prototype,
-    methods
+    methods,
+    EaseValueMethods
 );
 
 export default Slider;

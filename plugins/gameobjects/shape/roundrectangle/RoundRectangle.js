@@ -1,12 +1,13 @@
-import GeomRoundRectangle from './geom/RoundRectangle.js';
-import LineTo from '../utils/LineTo.js';
-import ArcTo from '../utils/ArcTo.js';
+import GeomRoundRectangle from '../../../geom/roundrectangle/RoundRectangle.js';
+import LineTo from '../utils/pathData/LineTo.js';
+import ArcTo from '../utils/pathData/ArcTo.js';
 import Render from './render/Render.js';
 
+const Shape = Phaser.GameObjects.Shape;
 const GetValue = Phaser.Utils.Objects.GetValue;
 const Earcut = Phaser.Geom.Polygon.Earcut;
 
-class RoundRectangle extends Phaser.GameObjects.Shape {
+class RoundRectangle extends Shape {
     constructor(scene, x, y, width, height, radiusConfig, fillColor, fillAlpha) {
         if (x === undefined) {
             x = 0;
@@ -16,7 +17,7 @@ class RoundRectangle extends Phaser.GameObjects.Shape {
         }
 
         var geom = new GeomRoundRectangle();  // Configurate it later
-        super(scene, 'RoundRectangle', geom);
+        super(scene, 'rexRoundRectangleShape', geom);
 
         var radius = GetValue(radiusConfig, 'radius', radiusConfig);
         geom.setTo(0, 0, width, height, radius);
@@ -30,7 +31,7 @@ class RoundRectangle extends Phaser.GameObjects.Shape {
         }
 
         this.updateDisplayOrigin();
-        this.updateData();
+        this.dirty = true;
     }
 
     updateData() {
@@ -111,7 +112,7 @@ class RoundRectangle extends Phaser.GameObjects.Shape {
         this.geom.height = height;
         this.geom.width = width
         this.updateDisplayOrigin();
-        this.updateData();
+        this.dirty = true;
 
         var input = this.input;
         if (input && !input.customHitArea) {
@@ -138,7 +139,7 @@ class RoundRectangle extends Phaser.GameObjects.Shape {
         }
 
         this._iteration = value;
-        this.updateData();
+        this.dirty = true;
     }
 
     setIteration(iteration) {
@@ -156,7 +157,7 @@ class RoundRectangle extends Phaser.GameObjects.Shape {
     set radius(value) {
         this.geom.setRadius(value);
         this.updateDisplayOrigin();
-        this.updateData();
+        this.dirty = true;
     }
 
     setRadius(value) {

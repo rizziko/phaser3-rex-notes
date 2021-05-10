@@ -50,6 +50,7 @@
 1. [Grid-buttons](ui-gridbuttons.md): A container with a group of buttons in grids.
 1. [Grid-sizer](ui-gridsizer.md): Layout children game objects in grids.
 1. [Grid-table](ui-gridtable.md): A container with a [grid table](gridtable.md), slider, and scroller.
+1. [Knob](ui-knob.md): A knob button based on circular progress.
 1. [Label](ui-label.md): A container with an icon, text, and background.
 1. [Menu](ui-menu.md): A container with buttons and sub-menu.
 1. [Number-bar](ui-numberbar.md): A container with an icon, slider, text, and background.
@@ -119,8 +120,38 @@
         // ...
     }
     ```
+1. [Custom shapes](shape-custom-shapes.md): Custom shapes on shape.
+    ```javascript
+    var customShapes = scene.rexUI.add.customShapes(x, y, width, height, config);
+    ```
+    or
+    ```javascript
+    class MyCustomShapes extends RexPlugins.UI.CustomShapes {
+        constructor(scene, x, y, width, height, config) {
+            super(scene, x, y, width, height, config);
+            // ...
+            scene.add.existing(this);
+        }
+        // ...
+    }    
+    ```
+1. [Canvas-round-rectangle](canvas-roundrectangle.md): Round rectangle on canvas.
+    ```javascript
+    var shape = scene.rexUI.add.roundRectangleCanvas(x, y, width, height, radiusConfig, fillStyle, strokeStyle, lineWidth, fillColor2, isHorizontalGradient);
+    ```
+    or
+    ```javascript
+    class MyRoundRectangleCanvas extends RexPlugins.UI.RoundRectangleCanvas {
+        constructor(scene, x, y, width, height, radiusConfig, fillStyle, strokeStyle, lineWidth, fillColor2, isHorizontalGradient) {
+            super(scene, x, y, width, height, radiusConfig, fillStyle, strokeStyle, lineWidth, fillColor2, isHorizontalGradient);
+            // ...
+            scene.add.existing(this);
+        }
+        // ...
+    }
+    ```
 
-### Canvas objects
+### Canvas/Shape objects
 
 1. [Canvas](canvas.md): Drawing on [canvas](https://www.w3schools.com/html/html5_canvas.asp).
     ```javascript
@@ -148,6 +179,36 @@
     class MyImage extends RexPlugins.UI.CircleMaskImage {
         constructor(scene, x, y, key, frame, config) {
             super(scene, x, y, key, frame, config);
+            // ...
+            scene.add.existing(this);
+        }
+        // ...
+    }
+    ```
+1. [Circular progress shape](shape-circularprogress.md): Circular progress bar shape.
+    ```javascript
+    var circularProgress = scene.rexUI.add.circularProgress(x, y, radius, barColor, value, config);
+    ```
+    or
+    ```javascript
+    class MyCircularProgress extends RexPlugins.UI.CircularProgress {
+        constructor(scene, x, y, radius, barColor, value, config) {
+            super(scene, x, y, radius, barColor, value, config);
+            // ...
+            scene.add.existing(this);
+        }
+        // ...
+    }
+    ```
+1. [Circular progress canvas](canvas-circularprogress.md): Circular progress bar on canvas
+    ```javascript
+    var circularProgress = scene.rexUI.add.circularProgressCanvas(x, y, radius, barColor, value, config);
+    ```
+    or
+    ```javascript
+    class MyCircularProgress extends RexPlugins.UI.CircularProgressCanvas {
+        constructor(scene, x, y, radius, barColor, value, config) {
+            super(scene, x, y, radius, barColor, value, config);
             // ...
             scene.add.existing(this);
         }
@@ -188,6 +249,21 @@
         // ...
     }
     ```
+1. [Dynamic text](dynamictext.md): Control position, angle of each character drawn on a canvas.
+    ```javascript
+    var txt = scene.rexUI.add.dynamicText(config);
+    ```
+    or
+    ```javascript
+    class MyText extends RexPlugins.UI.DynamicText {
+        constructor(scene, config) {
+            super(scene, config);
+            // ...
+            scene.add.existing(this);
+        }
+        // ...
+    }
+    ```
 
 #### Behaviors of text
 
@@ -196,6 +272,21 @@
     scene.rexUI.add.edit(textObject, config);
     // scene.rexUI.add.edit(textObject, config, onClose);
     ```
+1. Wrap-expand text
+    ```javascript
+    var textObject = scene.rexUI.wrapExpandText(textObject);
+    // var textObject = scene.rexUI.wrapExpandText(textObject, minWidth);
+    ```
+    - `textObject` : 
+        - [Text object](text.md), [bbcode text object](bbcodetext.md), [tag text boject](tagtext.md), 
+        - [Bitmap text object](bitmaptext.md)
+        - [Dynamic text object](dynamictext.md), With default wrap configuration, ex:
+            ```javascript
+            {
+                lineHeight: 24, 
+                padding: {bottom: 12}
+            }
+            ```
 
 ### Touch input
 
@@ -262,6 +353,8 @@ Helper method, which applies [click](button.md), [tap](gesture-tap.md), [press](
 
 ```javascript
 scene.rexUI.setChildrenInteractive(sizer, {
+    targets: targetSizers,
+
     // click: {mode: 'release', clickInterval: 100},
 
     // over: undefined,
@@ -278,6 +371,7 @@ scene.rexUI.setChildrenInteractive(sizer, {
 })
 ```
 
+- `targetSizers` : Array of target children-sizer.
 - `click` : [Configuration](button.md#create-instance) of Button behavior.
     - `false` : Don't install Button behavior.
 - `over` :

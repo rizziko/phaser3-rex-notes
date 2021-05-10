@@ -1,4 +1,5 @@
 import FSM from './fsm.js';
+import SetValue from './utils/object/SetValue.js';
 
 class FSMPlugin extends Phaser.Plugins.BasePlugin {
 
@@ -16,5 +17,7 @@ class FSMPlugin extends Phaser.Plugins.BasePlugin {
     }
 
 }
+
+SetValue(window, 'RexPlugins.FSM', FSM);
 
 export default FSMPlugin;

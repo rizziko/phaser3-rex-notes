@@ -9,7 +9,10 @@ A container with a [grid table](gridtable.md), slider, and scroller.
 
 - [Grid table](https://codepen.io/rexrainbow/pen/XyJbWX)
 - [Varying cell size](https://codepen.io/rexrainbow/pen/vYBdNQy)
-- [Sizer cell](https://codepen.io/rexrainbow/pen/pooZWme)
+- [Message list](https://codepen.io/rexrainbow/pen/bGgKbmv)
+- Sizer cell: 
+    - [Demo 1](https://codepen.io/rexrainbow/pen/pooZWme)
+    - [Demo 2](https://codepen.io/rexrainbow/pen/abOgyPo)
 - [Fade-out-destroy cell](https://codepen.io/rexrainbow/pen/YzXYemw)
 
 ## Usage
@@ -492,7 +495,7 @@ See [base sizer object](ui-basesizer.md).
     - `swipeEventName` : `'cell.swipeleft'`, `'cell.swiperight'`, `'cell.swipeup'`, `'cell.swipedown'`.
 - Scroll table
     ```javascript
-    table.on('scroll', function(panel) {
+    table.on('scroll', function(table) {
         // ...
     })
     ```

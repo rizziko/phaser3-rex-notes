@@ -8,6 +8,7 @@ A container with buttons and sub-menu.
 ## Live demos
 
 - [Pop-up menu](https://codepen.io/rexrainbow/pen/PxOEBr)
+- [Drop down list](https://codepen.io/rexrainbow/pen/JjEORZb)
 
 ## Usage
 
@@ -66,7 +67,7 @@ A container with buttons and sub-menu.
     import { Menu } from 'phaser3-rex-plugins/templates/ui/ui-components.js';
     ```
 - Add menu object
-    ```javascript    
+    ```javascript
     var menu = new Menu(scene, config);
     sscene.add.existing(menu);
     ```
@@ -80,6 +81,7 @@ var menu = scene.rexUI.add.menu({
     // anchor: undefined,
 
     // orientation: 1,
+    // subMenuSide: undefined,
     items: [],
 
     createBackgroundCallback: function(items) {
@@ -101,15 +103,17 @@ var menu = scene.rexUI.add.menu({
     easeIn: 0,
     // easeIn: {
     //     duration: 500,
+    //     orientation: undefined,
     //     ease: 'Cubic'
     // },
 
     easeOut: 0,
     // easeOut: {
     //     duration: 100,
+    //     orientation: undefined,
     //     ease: 'Linear'
     // },
-    // expandEvent: 'button.click'
+    // expandEvent: 'button.click',
 
     name: ''
 });
@@ -140,14 +144,28 @@ var menu = scene.rexUI.add.menu({
     - An object :
         - `easeIn.duration` : Duration of ease, in milliseconds.
         - `easeIn.ease` : Ease function, default is `'Cubic'`
+        - `easeIn.orientation` : Orientation of ease.
+            - `undefined` : The same orientation with menu's orientation.
+            -  `'h'`, `'x'`, or `0` : Pop-up menu horizontally.
+            -  `'v'`, `'y'`, or `1` : Pop-up menu vertically.
 - `easeOut` : Scale down size when extend menu.
     - A number : Duration of ease, in milliseconds.
     - An object :
         - `easeOut.duration` : Duration of ease, in milliseconds.
         - `easeOut.ease` : Ease function, default is `'Linear'`
+        - `easeOut.orientation` : Orientation of ease.
+            - `undefined` : The same orientation with menu's orientation.
+            -  `'h'`, `'x'`, or `0` : Scale-down menu horizontally.
+            -  `'v'`, `'y'`, or `1` : Scale-down menu vertically.
 - `expandEvent` : Event name of expanding sub-menu.
     - `'button.click'` : Default value
     - `'button.over'`
+- `subMenuSide` : Side of sub-menu
+    - `undefined` : Determine side of sub-menu automatically.
+    - `right`, or `0` : Put sub-menu at right side. Used with `orientation` is set to `y`.
+    - `left`, or `2` : Put sub-menu at left side. Used with `orientation` is set to `y`.
+    - `up`, or `3` : Put sub-menu at up side. Used with `orientation` is set to `x`.
+    - `down`, or `1` : Put sub-menu at down side. Used with `orientation` is set to `x`.
 - `name` : Set name of this menu.
 
 ### Custom class
@@ -215,3 +233,35 @@ See [sizer object](ui-sizer.md), [base sizer object](ui-basesizer.md).
     - `index` : Index of triggered button.
     - `pointer` : [Pointer](touchevents.md#properties-of-point) object.
     - Cancel remaining touched events : `event.stopPropagation()`
+- Expand(Pop-up start) sub-menu
+    ```javascript
+    menu.on('expand', function(subMenu, parentButton) {
+        // ....
+    }, scope)
+    ```
+    - `subMenu` : Sub-menu.
+    - `parentButton` : Game object of triggered button.
+    - `rootMenu` : Root-menu
+- Pop-up root-menu, or sub-menu completely
+    ```javascript
+    menu.on('popup.complete', function(menu) {
+        // ....
+    }, scope)
+    ```
+    - `menu` : Root-menu, or sub-menu
+- Collapse(Scale-down starting) root-menu, or sub-menu
+    ```javascript
+    menu.on('collapse', function(subMenu, parentButton, rootMenu) {
+        // ....
+    }, scope)
+    ```
+    - `subMenu` : Sub-menu.
+    - `parentButton` : Game object of triggered button.
+    - `rootMenu` : Root-menu
+- Scale-down root-menu completely
+    ```javascript
+    menu.on('scaledown.complete', function(rootMenu) {
+        // ....
+    }, scope)
+    ```
+    - `rootMenu` : Root-menu

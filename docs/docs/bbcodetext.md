@@ -102,21 +102,27 @@ Default style
     fontFamily: 'Courier',
     fontSize: '16px',
     fontStyle: '',
-    backgroundColor: null,
-    color: '#fff',
-    stroke: '#fff',
+    backgroundColor: null,  // null, css string, or number
+    backgroundColor2: null,  // null, css string, or number
+    backgroundHorizontalGradient: true,
+    backgroundStrokeColor: null,  // null, css string, or number
+    backgroundStrokeLineWidth: 2,
+    backgroundCornerRadius: 0,
+    backgroundCornerIteration: null,    
+    color: '#fff',  // null, css string, or number
+    stroke: '#fff',  // null, css string, or number
     strokeThickness: 0,
     shadow: {
         offsetX: 0,
         offsetY: 0,
-        color: '#000',
+        color: '#000',  // css string, or number
         blur: 0,
         stroke: false,
         fill: false
     },
     underline: {
-        color: '#000',
-        thinkness: 0,
+        color: '#000',  // css string, or number
+        thickness: 0,
         offset: 0
     },
     // align: 'left',  // Equal to halign
@@ -147,7 +153,24 @@ Default style
 }
 ```
 
-Add text from JSON
+or
+
+```javascript
+var txt = scene.add.rexBBCodeText({
+    x: 0,
+    y: 0,
+    text: '',
+    style: {
+        fontSize: '64px',
+        fontFamily: 'Arial',
+        color: '#ffffff',
+        align: 'center',
+        backgroundColor: '#ff00ff'
+    }
+})
+```
+
+or
 
 ```javascript
 var txt = scene.make.rexBBCodeText({
@@ -169,6 +192,7 @@ var txt = scene.make.rexBBCodeText({
         align: 'center',
         backgroundColor: '#ff00ff'
     },
+    // origin: {x: 0.5, y: 0.5},
     add: true
 });
 ```
@@ -206,7 +230,7 @@ var txt = scene.make.rexBBCodeText({
 
 - Wrap by word or character.
     ```javascript
-    var txt = scene.make.text({
+    var txt = scene.make.rexBBCodeText({
         x: 400,
         y: 100,
         text: 'The sky above the port was the color of television, tuned to a dead channel.',
@@ -215,12 +239,18 @@ var txt = scene.make.rexBBCodeText({
             font: 'bold 25px Arial',
             fill: 'white',
             wrap: {
-                mode: 'word'     // 0|'none'|1|'word'|2|'char'|'character'
-                width: 300
+                mode: 0     // 0|'none'|1|'word'|2|'char'|'character'
+                width: 0
             }
         }
     });
     ```
+    - `wrap.mode` : 
+        - `0`, or `'none'` : No wrapping, default behavior.
+        - `1`, or `'word'` : Word wrapping.
+        - `2`, or `'char'`, or `'character'` : Character wrapping.
+    - `wrap.width` : Maximun wrapping width of a line.
+        - Wrap-fit : Set wrapping width to `fixedWidth - padding.left - padding.right` if `fixedWidth > 0`
 - Wrap mode
     - Get
         ```javascript
@@ -230,9 +260,9 @@ var txt = scene.make.rexBBCodeText({
         ```javascript
         txt.setWrapMode(mode);
         ```
-        - `'none'`, or `0` : No wrap
-        - `'word'`, or `1` : Word wrap
-        - `'character'`, or `2` : Character wrap
+        - `0`, or `'none'` : No wrapping.
+        - `1`, or `'word'` : Word wrapping.
+        - `2`, or `'char'`, or `'character'` : Character wrapping.
 - Wrap width
     - Get
         ```javascript
@@ -242,6 +272,8 @@ var txt = scene.make.rexBBCodeText({
         ```javascript
         txt.setWrapWidth(width);
         ```
+        - `width` : Maximun wrapping width of a line.
+            - Wrap-fit : Set wrapping width to `fixedWidth - padding.left - padding.right` if `fixedWidth > 0`
 
 ### Content
 
@@ -284,6 +316,7 @@ txt.setFontStyle(style);
         ```javascript
         txt.setFill(color);
         ```
+        - `color` : `null`, css string, or number.
 - Stroke color, thickness
     - Get
         ```javascript
@@ -294,6 +327,7 @@ txt.setFontStyle(style);
         ```javascript
         txt.setStroke(color, thickness);
         ```
+        - `color` : `null`, css string, or number.
     - Clear
         ```javascript
         txt.setStroke();
@@ -307,20 +341,51 @@ txt.setFontStyle(style);
         ```
     - Set
         ```javascript
-        txt.setUnderline(color, thinkness, ofset);
+        txt.setUnderline(color, thickness, ofset);
         txt.setUnderlineColor(color);
-        txt.setUnderlineThinkness(thinkness);
+        txt.setUnderlineThinkness(thickness);
         txt.setUnderlineOffset(ofset);
         ```
-- Background color
-    - Get
-        ```javascript
-        var color = txt.style.backgroundColor;
-        ```
-    - Set
-        ```javascript
-        txt.setBackgroundColor(color);
-        ```
+        - `color` : `null`, css string, or number.
+- Background
+    - Color, or gradient color
+        - Get
+            ```javascript
+            var color = txt.style.backgroundColor;
+            var color2 = txt.style.backgroundColor2;
+            var isHorizontalGradient = txt.style.backgroundHorizontalGradient;
+            ```
+        - Set
+            ```javascript
+            txt.setBackgroundColor(color);
+            // txt.setBackgroundColor(color, color2, isHorizontalGradient);
+            ```
+            - `color`, `color2` : `null`, css string, or number.
+    - Stroke color
+        - Get
+           ```javascript
+           var color = txt.style.backgroundStrokeColor;
+           var lineWidth = txt.style.backgroundStrokeLineWidth;
+           ```
+        - Set
+            ```javascript
+            txt.setBackgroundStrokeColor(color, lineWidth);
+            ```
+            - `color` : `null`, css string, or number.
+    - Round rectangle
+        - Get
+            ```javascript
+            var radius = txt.style.backgroundCornerRadius;
+            var iteration = txt.style.backgroundCornerIteration;
+            ```
+        - Set
+            ```javascript
+            txt.setBackgroundCornerRadius(radius);
+            // txt.setBackgroundCornerRadius(radius, iteration);
+            ```
+            - `iteration` : 
+                - `undefined` : Round rectangle
+                - `0` : Octagon
 - Shadow
     - Get
         ```javascript
@@ -340,6 +405,7 @@ txt.setFontStyle(style);
         txt.setShadowStroke(enabled);
         txt.setShadowFill(enabled);
         ```
+        - `color` : `null`, css string, or number.
 
 ### Image
 
@@ -371,6 +437,8 @@ txt.setFontStyle(style);
     - `data` : `{imgKey, config}`
 
 ### Hit area of words
+
+Size of hit-area is word-width x line-height, or image-width x line-height.
 
 #### Hitting events
 

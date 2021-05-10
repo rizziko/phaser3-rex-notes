@@ -1,5 +1,8 @@
 ## List of my plugins
 
+!!! note "Version of phaser3"
+    Please upgrade your phaser3 to version >= **3.50**.
+
 1. [Anchor](anchor.md): Set position based on visible window.
 1. [Arcade-TCRP/Player](arcade-tcrp-player.md): Run commands on step of Arcade.
 1. [Arcade-TCRP/Recorder](arcade-tcrp-recorder.md): Store commands with step of Arcade.
@@ -15,11 +18,14 @@
 1. [Board/Move To](board-moveto.md): Move chess towards target position with a steady speed.
 1. [Board/Path finder](board-pathfinder.md): Find moveable area or moving path.
 1. [Board/Shape](board-shape.md): Grid (polygon) shape object.
+1. [Bracket parser](bracketparser.md): A lite-weight bracket parser.
 1. [Buff data](buffdata.md): Data manager with buffs.
 1. [Build arcade object](buildarcadeobject.md): Create arcade body, and inject arcade object methods.
 1. [Bullet](bullet.md): Move game object toward current angle of game object, with a constant speed.
 1. [Button](button.md): Fires 'click' event when touch releasd after pressed.
 1. [Canvas](canvas.md): Drawing on [canvas](https://www.w3schools.com/html/html5_canvas.asp).
+1. [Canvas/Circular progress](canvas-circularprogress.md): Circular progress bar on canvas.
+1. [Canvas/Round rectangle](canvas-roundrectangle.md): Round rectangle on canvas.
 1. [Canvas image data](canvas-data.md): Get image data from texture, or text object.
 1. [Circle mask image](circlemaskimage.md): Load a texture, then apply a circle mask.
 1. [Clock](clock.md): A clock to count elapsed time.
@@ -32,9 +38,11 @@
 1. [Curve/Spiral](curve-spiral.md): Spiral curve.
 1. [Drag](drag.md): Drag game object.
 1. [Drag-rotate](dragrotate.md): Get dragging angle around a specific point.
+1. [Dynamic text](dynamictext.md): Control position, angle of each character drawn on a canvas.
 1. [Ease-move](easemove.md): Ease-move game object.
 1. [Eight direction](eightdirection.md): Move game object by cursor keys, with a constant speed.
 1. [Event promise](eventpromise.md): Return a [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) of an event.
+1. [Expression parser](expression-parser.md): Parse expression string into function.
 1. [Fade-out-destroy](fadeoutdestroy.md): Fade out game object then destroy it.
 1. [Fade-volume](fadevolume.md): Fade-in/fade-out volume of sound.
 1. [File chooser](filechooser.md): Create a transparent file chooser button.
@@ -75,6 +83,7 @@
 1. [Perspective/Card](perspective-card.md): A container with two perspective-images.
 1. [Perspective/Carousel](perspective-carousel.md): A container with cards.
 1. [Perspective/Image](perspective-image.md): Image with perspective rotation.
+1. [Perspective/ImageCarousel](perspective-imagecarousel.md): Display list of images.
 1. [Perspective/Render texture](perspective-rendertexture.md): Render texture with perspective rotation.
 1. [Pop up](popup.md): Scale up game object.
 1. [Quest](quest.md): Question manager.
@@ -82,12 +91,12 @@
 1. [Random place](randomplace.md): Place objects randomly inside an area without overlapping.
 1. [Restorable data](restorabledata.md): Restorable data manager.
 1. [RotateTo](rotateto.md): Rotate game object towards target position with a steady speed.
-1. [Round-Rectangle](shape-roundrectangle.md): Round rectangle shape.
 1. [Run-commands](runcommands.md): Run commands in array.
 1. [Scale-down-destroy](scaledowndestroy.md): Scale down game object then destroy it.
 1. [Script-tag loader](scripttagloader.md): Load script tag in preload stage.
 1. [Scroller](scroller.md): Drag content. Slow down when dragging released, pull back when out of bounds.
 1. [Sequence](sequence.md): Run sequence commands in array.
+1. [Shader/dissolve](shader-dissolve.md): Dissolve transition post processing filter.
 1. [Shader/glow-filter](shader-glowfilter.md): Glow post processing filter.
 1. [Shader/gray-scale](shader-grayscale.md): Gray scale post processing filter.
 1. [Shader/hsl-adjust](shader-hsladjust.md): Adjust color in HSL domain, post processing filter.
@@ -97,6 +106,10 @@
 1. [Shader/swirl](shader-swirl.md): Swirl post processing filter.
 1. [Shader/toonify](shader-toonify.md): Draw outlines and quantize color in HSV domain, post processing filter.
 1. [Shake-position](shake-position.md): Shake position of game object.
+1. [Shape/Circular progress](shape-circularprogress.md): Circular progress bar shape.
+1. [Shape/Custom shapes](shape-custom-shapes.md): Custom shapes on shape.
+1. [Shape/Round-Rectangle](shape-roundrectangle.md): Round rectangle shape.
+1. [Shape/Spinner](shape-spinner.md): Loading animations on shape.
 1. [Shatter image](shatter-image.md): Shatter image to triangle faces.
 1. [Ship](ship.md): Move game object as a space ship by cursor keys.
 1. [Slider](slider.md): Drag thumb on a slider bar.
@@ -114,6 +127,7 @@
 1. [UI/grid buttons](ui-gridbuttons.md): A container with a group of buttons in grids.
 1. [UI/grid sizer](ui-gridsizer.md): Layout children game objects in grids.
 1. [UI/gird table](ui-gridtable.md): A container with a grid table, slider, and scroller.
+1. [UI/Knob](ui-knob.md): A knob button based on circular progress.
 1. [UI/label](ui-label.md): A game object container with an icon, text, and background.
 1. [UI/menu](ui-menu.md): A container with buttons and sub-menu.
 1. [UI/number bar](ui-numberbar.md): A container with an icon, slider, text, and background.

@@ -2,8 +2,7 @@ import LogicBoard from './LogicBoard.js';
 import SetInteractive from './input/SetInteractive.js';
 
 var methods = {
-    setInteractive: SetInteractive,
-
+    setInteractive: SetInteractive
 }
 Object.assign(
     LogicBoard.prototype,

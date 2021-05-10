@@ -104,7 +104,8 @@ var container = scene.make.rexContainerLite({
     // scale : {
     //    x: 1,
     //    y: 1
-    //}
+    //},
+    // origin: {x: 0.5, y: 0.5},
 });
 ```
 
@@ -226,6 +227,10 @@ For example, container-lite is at (100, 100), and child is at **(10, 10)**, then
     ```javascript
     var gameObjects = container.getAllChildren();
     ```
+    - Put container itself and all children into [Layer](layer.md)
+        ```javascript
+        layer.add(container.getAllChildren([container]));
+        ```
     - Draw on [render texture](rendertexture.md#paste-texture)
         ```javascript
         rt.draw(container.getAllChildren());
@@ -258,6 +263,27 @@ Reference [Group](group.md)
 ```javascript
 container.setChildPosition(child, x, y);
 ```
+
+#### Rotation
+
+```javascript
+container.setChildRotation(child, rotation);
+```
+
+- `rotation` : Angle in radians.
+
+#### Scale
+
+```javascript
+container.setChildScale(child, scaleX, scaleY);
+```
+
+or 
+
+```javascript
+container.setChildDisplaySize(child, width, height);
+```
+
 
 #### Visible
 
@@ -297,6 +323,10 @@ var localState = child.rexContainer;
 - Local position
     ```javascript
     container.setChildLocalPosition(child, x, y);
+    ```
+- Local scale
+    ```javascript
+    container.setChildLocalScale(child, scaleX, scaleY);
     ```
 
 #### Tween local state

@@ -1,6 +1,7 @@
 import BaseSizer from '../basesizer/BaseSizer.js';
 import Methods from './Methods.js';
-import ORIENTATIONMODE from '../utils/OrientationConst.js';
+import GetChildrenProportion from './GetChildrenProportion.js';
+import GetOrientationMode from '../utils/GetOrientationMode.js';
 
 const IsPlainObject = Phaser.Utils.Objects.IsPlainObject;
 const GetValue = Phaser.Utils.Objects.GetValue;
@@ -47,10 +48,7 @@ class Sizer extends BaseSizer {
     }
 
     setOrientation(orientation) {
-        if (typeof (orientation) === 'string') {
-            orientation = ORIENTATIONMODE[orientation];
-        }
-        this.orientation = orientation;
+        this.orientation = GetOrientationMode(orientation);
         return this;
     }
 
@@ -61,7 +59,7 @@ class Sizer extends BaseSizer {
 
     get childrenProportion() {
         if (this._childrenProportion === undefined) {
-            this._childrenProportion = this.getChildrenProportion();
+            this._childrenProportion = GetChildrenProportion.call(this);
         }
         return this._childrenProportion;
     }

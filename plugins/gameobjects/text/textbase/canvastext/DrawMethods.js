@@ -1,3 +1,5 @@
+import DrawRoundRectangleBackground from '../../../canvas/utils/DrawRoundRectangleBackground.js';
+
 export default {
     draw(startX, startY, boxWidth, boxHeight) {
         var penManager = this.penManager;
@@ -6,20 +8,30 @@ export default {
         var context = this.context;
         context.save();
 
-        // this.clear();
-        this.drawBackground(this.defatultStyle.backgroundColor);
+        var defaultStyle = this.defaultStyle;
+
+        this.clear();
+        DrawRoundRectangleBackground(
+            this,
+            defaultStyle.backgroundColor,
+            defaultStyle.backgroundStrokeColor,
+            defaultStyle.backgroundStrokeLineWidth,
+            defaultStyle.backgroundCornerRadius,
+            defaultStyle.backgroundColor2,
+            defaultStyle.backgroundHorizontalGradient,
+            defaultStyle.backgroundCornerIteration
+        );
 
         // draw lines
-        var defatultStyle = this.defatultStyle;
         startX += this.startXOffset;
         startY += this.startYOffset;
-        var halign = defatultStyle.halign,
-            valign = defatultStyle.valign;
+        var halign = defaultStyle.halign,
+            valign = defaultStyle.valign;
 
-        var lineWidth, lineHeight = defatultStyle.lineHeight;
+        var lineWidth, lineHeight = defaultStyle.lineHeight;
         var lines = penManager.lines;
         var totalLinesNum = lines.length,
-            maxLines = defatultStyle.maxLines;
+            maxLines = defaultStyle.maxLines;
         var drawLinesNum, drawLineStartIdx, drawLineEndIdx;
         if ((maxLines > 0) && (totalLinesNum > maxLines)) {
             drawLinesNum = maxLines;
@@ -78,7 +90,7 @@ export default {
         context.save();
 
         var curStyle = this.parser.propToContextStyle(
-            this.defatultStyle,
+            this.defaultStyle,
             pen.prop
         );
         curStyle.buildFont();
@@ -108,7 +120,7 @@ export default {
                 offsetX, // x
                 (offsetY - this.startYOffset), // y
                 pen.width, // width
-                this.defatultStyle.lineHeight // height
+                this.defaultStyle.lineHeight // height
             );
         }
     },
@@ -116,14 +128,6 @@ export default {
     clear() {
         var canvas = this.canvas;
         this.context.clearRect(0, 0, canvas.width, canvas.height);
-    },
-
-    drawBackground(color) {
-        if (color === null) {
-            return;
-        }
-        this.context.fillStyle = color;
-        this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
     },
 
     drawUnderline(x, y, width, style) {
@@ -136,9 +140,9 @@ export default {
         var context = this.context;
         var savedLineCap = context.lineCap;
         context.lineCap = 'butt';
-        context.beginPath();
         context.strokeStyle = style.underlineColor;
         context.lineWidth = style.underlineThickness;
+        context.beginPath();
         context.moveTo(x, y);
         context.lineTo((x + width), y);
         context.stroke();

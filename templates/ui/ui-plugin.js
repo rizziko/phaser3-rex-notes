@@ -1,11 +1,17 @@
 import ObjectFactory from './ObjectFactory.js';
 
 import RoundRectangleFactory from './roundrectangle/Factory.js';
+import RoundRectangleCanvasFactory from './roundrectanglecanvas/Factory.js';
 import BBCodeTextFactory from './bbcodetext/Factory.js';
 import TagTextFactory from './tagtext/Factory.js';
 import ContainerFactory from './container/Factory.js';
 import CanvasFactory from './canvas/Factory.js';
 import CircleMaskImageFactory from './circlemaskimage/Factory.js';
+import DynamicTextFactory from './dynamictext/Factory.js';
+import CircularProgressCanvasFactory from './circularprogresscanvas/Factory.js';
+import CircularProgressFactory from './circularprogress/Factory.js';
+import KnobFactory from './knob/Factory.js';
+import CustomShapesFactory from './customshapes/Factory.js';
 import ChartFactory from './chart/Factory.js';
 import NinePatchFactory from './ninepatch/Factory.js';
 
@@ -26,9 +32,7 @@ import MenuFactory from './menu/Factory.js';
 import TextBoxFactory from './textbox/Factory.js';
 import NumberBarFactory from './numberbar/Factory.js';
 import PagesFactory from './pages/Factory.js';
-import TextBlockFactory from './textblock/Factory.js';
 import TextAreaFactory from './textarea/Factory.js';
-import ScrollableBlockFactory from './scrollableblock/Factory.js';
 import ScrollablePanelFactory from './scrollablepanel/Factory.js';
 import ToastFactory from './toast/Factory.js';
 import SidesFactory from './sides/Factory.js';
@@ -51,6 +55,7 @@ import {
     IsShown,
 } from './utils/Hide.js';
 import Edit from '../../plugins/behaviors/textedit/Edit.js';
+import WrapExpandText from './utils/wrapexpandtext/WrapExpandText.js';
 import { WaitEvent, WaitComplete } from './utils/WaitEvent.js';
 import GetViewport from '../../plugins/utils/system/GetViewport.js';
 import SetChildrenInteractive from './utils/setchildreninteractive/SetChildrenInteractive.js';
@@ -68,9 +73,17 @@ class UIPlugin extends Phaser.Plugins.ScenePlugin {
         eventEmitter.on('destroy', this.destroy, this);
     }
 
+    isInTouching(gameObject, pointer, preTest, postTest) {
+        if (!gameObject.visible) {
+            return false;
+        }
+        return IsPointerInBounds(gameObject, pointer, preTest, postTest);
+    }
+
     get viewport() {
         return GetViewport(this.scene, true);
     }
+
 }
 
 var methods = {
@@ -80,7 +93,7 @@ var methods = {
     show: Show,
     isShown: IsShown,
     edit: Edit,
-    isInTouching: IsPointerInBounds,
+    wrapExpandText: WrapExpandText,
     waitEvent: WaitEvent,
     waitComplete: WaitComplete,
     setChildrenInteractive: SetChildrenInteractive,

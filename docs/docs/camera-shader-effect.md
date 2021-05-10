@@ -29,6 +29,7 @@ Some post-fx pipelines:
 - [Pixelation](shader-pixelation.md): Pixelation post processing filter.
 - [Toonify](shader-toonify.md): Draw outlines and quantize color in HSV domain, post processing filter.
 - [Swirl](shader-swirl.md): Swirl post processing filter.
+- [Dissolve](shader-dissolve.md): Dissolve transition post processing filter.
 
 ### Add post-fx pipeline
 
@@ -40,7 +41,7 @@ camera.setPostPipeline(PostFxClass);
 
 ### Remove post-fx pipeline
 
-- Remove a post-fx pipeline
+- Remove a kind of post-fx pipeline
     ```javascript
     camera.removePostPipeline(PostFxClass);
     ```
@@ -59,3 +60,7 @@ camera.setPostPipeline(PostFxClass);
 ```javascript
 var pipelineInstance = camera.getPostPipeline(PostFxClass);
 ```
+
+- `pipelineInstance` : 
+    - A pipeline instance
+    - An array of pipeline instances
