@@ -5,15 +5,16 @@ import { WaitComplete } from '../utils/WaitEvent.js'
 const IsPlainObject = Phaser.Utils.Objects.IsPlainObject;
 
 export default {
-    popUp(duration, orientation, ease) {
+    popUp(duration, orientation, ease, endScale) {
         if (IsPlainObject(duration)) {
             var config = duration;
             duration = config.duration;
             orientation = config.orientation;
             ease = config.ease;
+			endScale = config.endScale;
         }
 
-        this._scale = PopUp(this, duration, orientation, ease, this._scale);
+        this._scale = PopUp(this, duration, orientation, ease, this._scale, endScale);
         this._scale.once('complete', function () {
             this.emit('popup.complete', this);
         }, this);

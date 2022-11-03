@@ -1,6 +1,6 @@
 import Scale from './scale.js';
 
-var PopUp = function (gameObject, duration, orientation, ease, scale) {
+var PopUp = function (gameObject, duration, orientation, ease, scale, endScale) {
     defaultConfig.mode = 0;
     switch (orientation) {
         case 0:
@@ -19,7 +19,7 @@ var PopUp = function (gameObject, duration, orientation, ease, scale) {
             defaultConfig.start = 0;
             break;
     }
-    defaultConfig.end = 1;
+    defaultConfig.end = endScale ?? 1;
     defaultConfig.duration = duration;
     defaultConfig.ease = (ease === undefined) ? 'Cubic' : ease;
 
